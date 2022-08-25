@@ -20,6 +20,13 @@ class ClientesController extends Controller
     }
 
     public function store(Request $request){
+        $request->validate([
+            'nome' => 'required',
+            'valor'=> 'required',
+            'plataforma'=> 'required',
+            'modelo'=> 'required',
+            'status'=> 'required'
+        ]);
 
         $cliente = Cliente::create($request->all());
 

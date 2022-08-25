@@ -1,6 +1,6 @@
 <x-layout title='Novo Cliente'>
 
-    <form method="post" action="{{route('clientes.store')}}">
+    <form method="post" action="{{route('clientes.store')}}" :update="false">
         @csrf
         <div class="mb-3">
 
