@@ -19,4 +19,4 @@ Route::get('/', function () {
     return redirect('/clientes');
 });
 
-Route::resource('/clientes', ClientesController::class);
+Route::resource('/clientes', ClientesController::class)->except('show');
