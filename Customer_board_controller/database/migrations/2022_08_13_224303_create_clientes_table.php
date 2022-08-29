@@ -18,6 +18,8 @@ class CreateClientesTable extends Migration
             $table->string('nome', 128);
             $table->string('valor');
             $table->string('plataforma');
+            $table->string('modelo');
+            $table->string('status');
             $table->timestamps();
         });
     }
