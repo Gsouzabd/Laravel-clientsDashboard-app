@@ -14,4 +14,8 @@ class Cliente extends Model
     {
        return $this->hasMany(Equipe::class, 'cliente_id');
     }
+
+
+
+
 }

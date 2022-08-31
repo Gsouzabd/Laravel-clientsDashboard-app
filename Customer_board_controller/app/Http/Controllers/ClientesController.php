@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use App\Models\Equipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -10,9 +11,11 @@ class ClientesController extends Controller
 {
     public function index(Request $request){
         $clientes = Cliente::all();
+        $equipes = Equipe::all();
+
         $successMsg = $request->session()->get('msg');
 
-        return view('Clientes.index', ['clientes' => $clientes])->with('successMsg', $successMsg);
+        return view('Clientes.index', ['clientes' => $clientes, 'equipes'=> $equipes])->with('successMsg', $successMsg);
     }
 
     public function create(){
@@ -29,6 +32,9 @@ class ClientesController extends Controller
         ]);
 
         $cliente = Cliente::create($request->all());
+        $equipe = $cliente->equipe()->create([
+            'nome' => $request->equipe_nome
+        ]);
 
         return redirect()->route('clientes.index')->with('msg', "Cliente '{$cliente->nome}' Criado com sucesso");
     }

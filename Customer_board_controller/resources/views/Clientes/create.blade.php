@@ -2,8 +2,10 @@
 
     <form method="post" action="{{route('clientes.store')}}" :update="false">
         @csrf
-        <div class="mb-3">
 
+    <div class="row mb-3">
+
+        <div class="col-8">
             <div class="form-group">
                 <label for="nome">Nome</label>
                 <input type="text" class="form-control" id="nome" name="nome" aria-describedby="emailHelp" placeholder="Nome">
@@ -36,9 +38,21 @@
                     <option value="negociacao" name="negociacao">Negociação</option>
                 </select>
             </div>
-
         </div>
-        <button class="btn btn-primary" type="submit">Adicionar</button>
+
+            <div class="col-2">
+                <div class="form-group">
+                    <label for="equipe_nome">Equipe</label>
+                    <select class="form-control" id="equipe_nome" name="equipe_nome">
+                        <option id="Desenvolvimento" name="Desenvolvimento">Desenvolvimento</option>
+                        <option id="Marketing" name="Marketing">Marketing</option>
+                        <option id="Desenvolvimento/marketing" name="Desenvolvimento/marketing">Desenvolvimento e Marketing</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+            <button class="btn btn-primary" type="submit">Adicionar</button>
     </form>
 
 

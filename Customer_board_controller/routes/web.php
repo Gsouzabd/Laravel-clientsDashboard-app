@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\EquipesController;
+use App\Http\Controllers\FuncionariosController;
 use App\Http\Controllers\SeriesController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +22,6 @@ Route::get('/', function () {
 });
 
 Route::resource('/clientes', ClientesController::class)->except('show');
+Route::resource('/equipes', EquipesController::class);
+Route::resource('/funcionarios', FuncionariosController::class);
+
