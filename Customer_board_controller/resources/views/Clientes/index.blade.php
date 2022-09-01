@@ -33,14 +33,20 @@
                 <td> <?= $cliente->modelo?></td>
                 <td> <?= $cliente->plataforma?></td>
                 <td><?= $cliente->status?></td>
+                <?php
+                $equipes = $cliente->equipe;
+                foreach ($equipes as $equipe):?>
+                <td><?= $equipe->nome?></td>
+                <?php endforeach;?>
 
-            <?php foreach ($equipes as $equipe):?>
-            <td><?= $equipe->nome?>
-            <a href="{{route('equipes.show', $equipe->id)}}"><button class="btn btn-dark mb-1">Ver Equipe</button></a> </td>
-            <?php endforeach; ?>
+
+
+
+
 
             <td><a href="{{route('clientes.edit', $cliente->id)}}"><button class="btn btn-dark mb-2" >Editar</button></a></td>
             <form action="{{route('clientes.destroy', $cliente->id)}}" method="post">
+
                 @method('DELETE')
                 @csrf
             <td> <button class="btn btn-red mb-2" type="submit">Excluir</button></td>
