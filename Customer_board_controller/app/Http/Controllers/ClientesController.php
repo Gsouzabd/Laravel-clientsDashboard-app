@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\DB;
 
 class ClientesController extends Controller
 {
+
+    public function __construct(ClienteRepository $repository)
+    {
+    }
+
     public function index(Request $request){
         $clientes = Cliente::all();
 
@@ -22,9 +27,9 @@ class ClientesController extends Controller
         return view('Clientes.create');
     }
 
-    public function store(Request $request, ClienteRepository $clienteRepository){
+    public function store(Request $request){
 
-        $cliente = $clienteRepository->add($request);
+        $cliente = $this->repository->add($request);
         return redirect()->route('clientes.index')->with('msg', "Cliente '{$cliente->nome}' Criado com sucesso");
     }
 
