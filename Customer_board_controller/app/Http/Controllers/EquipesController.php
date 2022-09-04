@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cliente;
 use App\Models\Equipe;
 use App\Models\Funcionario;
+use App\Repositories\EquipesRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -47,34 +48,21 @@ class EquipesController extends Controller
     {
         $funcionarios = Funcionario::all();
         $clientes = Cliente::all();
-        $cliente = $clientes[1];
+        $cliente = $clientes[0];
         return view('equipes.create', ['funcionarios' => $funcionarios, 'cliente'=>$cliente]);
 
     }
 
-    public function store(Request $request)
+    public function store(Request $request, EquipesRepository $repository)
     {
-        DB::transaction(function () use ($request){
-        $equipe = Equipe::create([
-            'cliente_id' => $request->cliente_id,
-            'nome' => $request->equipe_nome
-        ]);
+       $equipe = $repository->add($request);
+       return redirect()->route('equipes.index')->with('msg', "Equipe '{$equipe->nome}' criada com Sucesso!");
+    }
 
-        $funcs []= [$request->input('funcionarios')];
-        foreach ($funcs as $func => $funcionarios) {
-            foreach ($funcionarios as $funcionario => $nomes) {
-                foreach ($nomes as $names => $nome) {
-                    $nome = [
-                        'nome' => $nome,
-                        'funcao' => 'teste',
-                        'equipe_id' => $equipe->id
-                    ];
-
-                    Funcionario::create($nome);
-                }
-            }
-        }
-    });
-}
+    public function destroy(Request $request, EquipesRepository $repository)
+    {
+        $repository->destroy($request);
+        return redirect()->route('equipes.index')->with('msg', "Equipe excluída com sucesso!");
+    }
 
 }

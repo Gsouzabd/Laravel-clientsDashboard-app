@@ -27,15 +27,16 @@ class ClientesController extends Controller
         return view('Clientes.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request, ClienteRepository $repository){
 
-        $cliente = $this->repository->add($request);
-        return redirect()->route('clientes.index')->with('msg', "Cliente '{$cliente->nome}' Criado com sucesso");
+        $cliente = $repository->add($request);
+
+        return redirect()->route('clientes.index')->with('msg', "Cliente  Criado com sucesso");
     }
 
-    public function destroy(Request $request){
+    public function destroy(Request $request, ClienteRepository  $repository){
 
-        Cliente::destroy($request->cliente);
+        $repository->destroy($request);
         return redirect()->route('clientes.index')->with('msg', 'Cliente excluído com sucesso');
     }
 

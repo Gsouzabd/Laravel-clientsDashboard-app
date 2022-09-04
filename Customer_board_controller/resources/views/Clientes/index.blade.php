@@ -1,3 +1,4 @@
+
 <x-layout title="Clientes">
 
 <div class="mb-2">
@@ -35,9 +36,11 @@
                 <td><?= $cliente->status?></td>
                 <?php
                 $equipes = $cliente->equipe;
+
                 foreach ($equipes as $equipe):?>
                 <td><?= $equipe->nome?></td>
-                <?php endforeach;?>
+            <?php endforeach;?>
+
 
 
 
