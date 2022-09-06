@@ -16,6 +16,7 @@
                 <tr>
                     <th scope="col">Nome</th>
                     <th scope="col">Cliente Id</th>
+                    <th scope="col">Funcionários</th>
                 </tr>
                 </thead>
 

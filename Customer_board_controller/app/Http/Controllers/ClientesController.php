@@ -40,23 +40,34 @@ class ClientesController extends Controller
         return redirect()->route('clientes.index')->with('msg', 'Cliente excluído com sucesso');
     }
 
-    public function edit(Cliente $cliente, Equipe $equipe)
+    public function edit(Cliente $cliente)
     {
+        $equipe = $cliente->equipe;
      return view('clientes.edit')->with('cliente', $cliente)->with('equipe', $equipe);
     }
 
-    public function update(Cliente $cliente, Equipe $equipe, Request $request)
+    public function update(Cliente $cliente, Request $request)
     {
         $cliente->fill($request->all());
 
         $equipeNome = $request->equipe_nome;
-        $clienteId = $request->cliente_id;
-        DB::table('equipes')
-            ->where('cliente_id', $cliente->id)
-            ->update(['cliente_id' => $clienteId, 'nome' => $equipeNome ]);
+        $clienteId = $cliente->id;
+        DB::table('equipes')->where('cliente_id', $clienteId)->update(['nome' => $equipeNome]);
 
 
+        $ativo = $request->ativo;
+        if ($ativo == 'on'){
+            $ativo = true;
+        }
+        else{
+            $ativo = false;
+        }
+
+
+        DB::table('clientes')->where('id', $cliente->id)->update(['ativo' => $ativo]);
         $cliente->save();
+
+
 
         return redirect()->route('clientes.index')->with('msg', "Cliente '{$cliente->nome}' editado com sucesso!");
     }

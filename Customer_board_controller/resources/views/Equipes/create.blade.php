@@ -13,9 +13,12 @@
                         <label for="funcionarios[]">Funcionários</label>
                     </br>
                         <select class="select" name="funcionarios[]" multiple>
-                            <?php foreach ($funcionarios as $funcionario):?>
-                            <option value="{{$funcionario->nome}}">{{$funcionario->nome}}</option>
-                        <?php endforeach;?>
+
+                            <option value="Marcia">Marcia</option>
+                            <option value="Marcia">Edilange</option>
+                            <option value="Marcia">Samuel</option>
+                            <option value="Marcia">Gabriel</option>
+
                         </select>
 
                         <input type="hidden" name="cliente_id" value="{{$cliente->id}}">

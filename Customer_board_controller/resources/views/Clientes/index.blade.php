@@ -20,6 +20,7 @@
                 <th scope="col">Plataforma</th>
                 <th scope="col">Status</th>
                 <th scope="col">Equipe</th>
+                <th scope="col">Ativo</th>
 
             </tr>
             </thead>
@@ -36,10 +37,11 @@
                 <td><?= $cliente->status?></td>
                 <?php
                 $equipes = $cliente->equipe;
-
-                foreach ($equipes as $equipe):?>
+          foreach ($equipes as $equipe):?>
                 <td><?= $equipe->nome?></td>
             <?php endforeach;?>
+            <td><?= $cliente->ativo?></td>
+
 
 
 

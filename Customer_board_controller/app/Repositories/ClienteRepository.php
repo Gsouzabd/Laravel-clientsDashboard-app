@@ -17,7 +17,7 @@ class ClienteRepository
                 ]);
                 $cliente = Cliente::create($request->all());
                 $equipe =  $cliente->equipe()->create([
-                    'nome' => $request->equipe_nome
+                    'nome'=> $request->equipe_nome
                 ]);
 
                 return $cliente;
