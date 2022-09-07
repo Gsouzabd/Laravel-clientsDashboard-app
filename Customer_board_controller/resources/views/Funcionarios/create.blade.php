@@ -1,6 +1,6 @@
 <x-layout title="Adicionar Equipe">
 
-    <form method="post" action="{{route('equipes.store')}}" :update="false">
+    <form method="post" action="{{route('funcionarios.store')}}" :update="false">
         @csrf
 
         <div class="row mb-3">
@@ -11,19 +11,22 @@
                 </div>
                 <div class="form-group">
                     <label for="funcao">Função</label>
-                    <input type="text" name="funcao">
+                    <select class="form-control" name="funcao">
+                        <?php foreach ($equipes as $equipe):?>
+                        <option value="{{$equipe->nome}}">{{$equipe->nome}}</option>
+                        <?php endforeach;?>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="equipe_nome">Equipe</label>
-                    <select class="form-control" id="equipe_nome" name="equipe_nome">
-
-                        <option name="Desenvolvimento">Desenvolvimento</option>
-                        <option id="Marketing" name="Marketing">Marketing</option>
-                        <option id="Desenvolvimento/marketing" name="Desenvolvimento/marketing">Desenvolvimento e Marketing</option>
+                    <select class="form-control" id="equioe_id" name="equipe_id">
+                        <?php foreach ($equipes as $equipe):?>
+                        <option value="{{$equipe->id}}">{{$equipe->nome}}</option>
+                        <?php endforeach;?>
                     </select>
-
-
                 </div>
+
+                        <input type="hidden" name="cliente_id" value="{{$cliente->id}}">
 
 
             </div>

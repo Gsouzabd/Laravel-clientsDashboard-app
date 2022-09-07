@@ -19,8 +19,8 @@ class Autenticador
     public function handle(Request $request, Closure $next)
     {
         if (!Auth::check()){
-        throw new AuthenticationException();
+        return redirect()->route('login.index');
     }
-
+        return $next($request);
     }
 }

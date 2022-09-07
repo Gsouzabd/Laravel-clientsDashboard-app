@@ -6,6 +6,7 @@ use App\Http\Controllers\FuncionariosController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\UsersController;
+use App\Http\Middleware\Autenticador;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +31,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
 Route::resource('/users', UsersController::class)->except('index', 'destroy');
 
 
-Route::resource('/clientes', ClientesController::class)->except('show');
-Route::resource('/equipes', EquipesController::class);
-Route::resource('/funcionarios', FuncionariosController::class);
+Route::resource('/clientes', ClientesController::class)->except('show')->middleware(Autenticador::class);
+Route::resource('/equipes', EquipesController::class)->middleware(Autenticador::class);
+Route::resource('/funcionarios', FuncionariosController::class)->middleware(Autenticador::class);
 

@@ -9,6 +9,7 @@
 
 <body>
 <div class="container">
+    @auth
     <h1> {{ $title }}</h1>
 
 
@@ -27,7 +28,7 @@
         </div>
         <a class="nav-item nav-link active m-3" href="{{route('logout')}}" style="color: white">Sair</a>
     </nav>
-
+    @endauth
     @if($errors->any())
     <div class="alert alert-danger">
         <ul>

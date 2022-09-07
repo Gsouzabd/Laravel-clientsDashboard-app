@@ -21,15 +21,13 @@
                 </div>
             </br>
                 <div class="form-group">
-                    <label for="equipes[]">Equipes</label>
+                    <label for="equipe">Equipes</label>
                     </br>
-                    <select class="select" name="equipes[]" multiple>
+                    <select class="select" name="equipe_id" multiple>
                         <?php foreach ($equipes as $equipe):?>
-                        <option value="{{$equipe->nome}}">{{$equipe->nome}}</option>
+                        <option value="{{$equipe->id}}">{{$equipe->nome}}</option>
                         <?php endforeach;?>
                     </select>
-
-                    <input type="hidden" name="equipe_id" value="{{$equipe->id}}">
 
                 </div>
 

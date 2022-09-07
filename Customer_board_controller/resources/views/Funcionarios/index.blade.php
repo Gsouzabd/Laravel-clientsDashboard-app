@@ -26,7 +26,6 @@
                     <td> <?= $funcionario->nome?></td>
                     <td><?= $funcionario->funcao?></td>
                     <td> <?= $funcionario->equipe_id?></td>
-                    <td><a href="{{route('funcionarios.show', $funcionario->id)}}"><button class="btn-dark">Ver funcionario</button></a> </td>
                     <td><a href="{{route('funcionarios.edit', $funcionario->id)}}"><button class="btn btn-dark mb-2" >Editar</button></a></td>
                     <form action="{{route('funcionarios.destroy', $funcionario->id)}}" method="post">
                         @method('DELETE')
