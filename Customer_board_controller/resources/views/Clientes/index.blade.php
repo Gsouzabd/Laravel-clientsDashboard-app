@@ -40,21 +40,22 @@
           foreach ($equipes as $equipe):?>
                 <td><?= $equipe->nome?></td>
             <?php endforeach;?>
-            <td><?= $cliente->ativo?></td>
+
+            <?php if ($cliente->ativo == true):?>
+            <td>Sim</td>
+            <?php else:?>
+            <td>Não</td>
+            <?php endif;?>
 
 
 
 
-
-
-
-
-            <td><a href="{{route('clientes.edit', $cliente->id)}}"><button class="btn btn-dark mb-2" >Editar</button></a></td>
+            <td><a href="{{route('clientes.edit', $cliente->id)}}"><button type="button" class="btn btn-primary"><i class="far fa-eye">Editar</i></button></a></td>
             <form action="{{route('clientes.destroy', $cliente->id)}}" method="post">
 
                 @method('DELETE')
                 @csrf
-            <td> <button class="btn btn-red mb-2" type="submit">Excluir</button></td>
+            <td> <button class="btn btn-danger mb-2" type="submit">Excluir</button></td>
             </form>
         </tr>
 

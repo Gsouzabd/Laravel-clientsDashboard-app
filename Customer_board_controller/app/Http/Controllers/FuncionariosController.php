@@ -33,6 +33,12 @@ class FuncionariosController extends Controller
 
         Funcionario::save($funcionario);
     }
+
+    public function create()
+    {
+        $equipes = Equipe::all();
+        return view('funcionarios.create', ['equipes'=> $equipes]);
+    }
 }
 
 

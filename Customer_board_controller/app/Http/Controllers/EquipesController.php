@@ -33,11 +33,23 @@ class EquipesController extends Controller
     public function update(Equipe $equipe, Request $request)
     {
         $equipe->fill($request->all());
-        $funcionario = $request->funcionario_nome;
-        $equipeId = $request->equipe_id;
-        DB::table('funcionarios')
-            ->where('nome', $funcionario)
-            ->update(['equipe_id' => $equipeId, 'nome' => $funcionario]);
+
+
+        $funcs []= [$request->input('funcionarios')];
+        foreach ($funcs as $func => $funcionarios) {
+            foreach ($funcionarios as $funcionario => $nomes) {
+                foreach ($nomes as $names => $nome) {
+                    $nome = [
+                        'nome' => $nome,
+                        'funcao' => $equipe->nome,
+                        'equipe_id' => $equipe->id
+                    ];
+
+                    Funcionario::create($nome);
+
+                }
+            }
+        }
 
         $equipe->save();
 

@@ -18,7 +18,7 @@ class LoginController extends Controller
             return redirect()->back()->withErrors(['Usuário ou senha inválidos!']);
         };
 
-        return redirect()->route('login.home')->with('msg', "Login realizado com sucesso. Bem-vindo!");
+        return redirect()->route('home')->with('msg', "Login realizado com sucesso. Bem-vindo!");
     }
 
     public function home()

@@ -3,7 +3,7 @@
 
     <div class="mb-2">
         <br>
-        <a href="{{route('equipes.create')}}" class="btn btn-dark mb-2">Adicionar</a>
+        <a href="{{route('funcionarios.create')}}" class="btn btn-dark mb-2">Adicionar</a>
         @isset($successMsg)
             <div class="alert alert-success">
                     <?=$successMsg?>
@@ -15,22 +15,23 @@
                 <thead>
                 <tr>
                     <th scope="col">Nome</th>
+                    <th scope="col">Função</th>
                     <th scope="col">Equipe Id</th>
                 </tr>
                 </thead>
-
-
                 <tbody>
+
                 <?php foreach ($funcionarios as $funcionario):?>
                 <tr>
                     <td> <?= $funcionario->nome?></td>
+                    <td><?= $funcionario->funcao?></td>
                     <td> <?= $funcionario->equipe_id?></td>
                     <td><a href="{{route('funcionarios.show', $funcionario->id)}}"><button class="btn-dark">Ver funcionario</button></a> </td>
                     <td><a href="{{route('funcionarios.edit', $funcionario->id)}}"><button class="btn btn-dark mb-2" >Editar</button></a></td>
                     <form action="{{route('funcionarios.destroy', $funcionario->id)}}" method="post">
                         @method('DELETE')
                         @csrf
-                        <td> <button class="btn btn-red mb-2" type="submit">Excluir</button></td>
+                        <td> <button class="btn btn-danger mb-2" type="submit">Excluir</button></td>
                     </form>
                 </tr>
                 <?php endforeach;?>

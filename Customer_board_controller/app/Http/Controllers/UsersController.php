@@ -22,8 +22,7 @@ class UsersController extends Controller
         $userCreated = User::create($user);
 
         Auth::login($userCreated);
-        session()->start();
-        $_SESSION['logado'];
+
         return redirect()->route('home')->with('loginMsg', "Cadastro realizado com sucesso. Bem-vindo(a)!");
     }
 }

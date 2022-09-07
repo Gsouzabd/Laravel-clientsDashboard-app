@@ -15,9 +15,9 @@
                         <select class="select" name="funcionarios[]" multiple>
 
                             <option value="Marcia">Marcia</option>
-                            <option value="Marcia">Edilange</option>
-                            <option value="Marcia">Samuel</option>
-                            <option value="Marcia">Gabriel</option>
+                            <option value="Edilange">Edilange</option>
+                            <option value="Samuel">Samuel</option>
+                            <option value="Gabriel">Gabriel</option>
 
                         </select>
 
