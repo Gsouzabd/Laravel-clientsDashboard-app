@@ -14,6 +14,7 @@
         <div class="col-2">
             <thead>
             <tr>
+                <th scope="col"></th>
                 <th scope="col">Nome</th>
                 <th scope="col">Valor</th>
                 <th scope="col">Modelo</th>
@@ -24,12 +25,16 @@
 
             </tr>
             </thead>
-
-
         <?php foreach ($clientes as $cliente):?>
-
         <tbody>
         <tr>
+            <?php if ($cliente->logo == true):?>
+                <td><img src="{{asset('storage/' . $cliente->logo)}}" class="img-thumbnail" style="height: 40px"></td>
+            <?php else:?>
+                <td><img src="{{asset('storage/clientes_logo/empty-logo.jpeg')}}" class="img-thumbnail" style="height: 40px"></td>
+            <?php endif;?>
+
+
                 <td> <?= $cliente->nome?></td>
                 <td> <?= $cliente->valor?></td>
                 <td> <?= $cliente->modelo?></td>
@@ -47,9 +52,6 @@
             <td>Não</td>
             <?php endif;?>
 
-
-
-
             <td><a href="{{route('clientes.edit', $cliente->id)}}"><button type="button" class="btn btn-primary"><i class="far fa-eye">Editar</i></button></a></td>
             <form action="{{route('clientes.destroy', $cliente->id)}}" method="post">
 
@@ -58,7 +60,6 @@
             <td> <button class="btn btn-danger mb-2" type="submit">Excluir</button></td>
             </form>
         </tr>
-
             <tbody>
 
     </tbody>

@@ -15,7 +15,14 @@ class ClienteRepository
                     'nome' => 'required',
                     'valor' => 'required'
                 ]);
-                $cliente = Cliente::create($request->all());
+                $cliente = Cliente::create([
+                    'nome' => $request->nome,
+                    'valor' => $request->valor,
+                    'plataforma' => $request->plataforma,
+                    'modelo' => $request->modelo,
+                    'logo' => $request->logopath,
+                    'status' => $request->status
+                ]);
                 $equipe =  $cliente->equipe()->create([
                     'nome'=> $request->equipe_nome
                 ]);
@@ -31,5 +38,6 @@ class ClienteRepository
 
         });
     }
+
 
 }

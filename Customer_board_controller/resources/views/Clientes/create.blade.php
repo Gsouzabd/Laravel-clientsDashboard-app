@@ -2,7 +2,7 @@
 
 <x-layout title='Novo Cliente'>
 
-    <form method="post" action="{{route('clientes.store')}}" :update="false">
+    <form method="post" action="{{route('clientes.store')}}" :update="false" enctype="multipart/form-data">
         @csrf
 
     <div class="row mb-3">
@@ -50,6 +50,10 @@
                         <option id="Marketing" name="Marketing">Marketing</option>
                         <option id="Desenvolvimento/marketing" name="Desenvolvimento/marketing">Desenvolvimento e Marketing</option>
                     </select>
+                </div>
+                <div class="form-group">
+                    <label for="logo">Logo</label>
+                        <input type="file" name="logo" accept="image/png, image/gif, image/jpeg" />
                 </div>
 
             </div>

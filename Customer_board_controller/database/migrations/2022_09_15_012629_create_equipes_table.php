@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddActiveInactive extends Migration
+class CreateEquipesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddActiveInactive extends Migration
      */
     public function up()
     {
-        Schema::table('funcionarios', function (Blueprint $table) {
-            $table->boolean('ativo')->default('true');
+        Schema::create('equipes', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('cliente_id')->constrained()->onDelete('cascade');
+            $table->timestamps();
+            $table->string('nome');
         });
     }
 
@@ -25,8 +28,6 @@ class AddActiveInactive extends Migration
      */
     public function down()
     {
-        Schema::table('funcionarios', function (Blueprint $table) {
-            $table->dropColumn('ativo');
-        });
+        Schema::dropIfExists('equipes');
     }
 }

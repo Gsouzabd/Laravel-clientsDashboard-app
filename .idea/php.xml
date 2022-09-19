@@ -220,9 +220,10 @@
       <path value="$PROJECT_DIR$/Customer_board_controller/vendor/phpunit/php-text-template" />
       <path value="$PROJECT_DIR$/Customer_board_controller/vendor/phpunit/phpunit" />
       <path value="$PROJECT_DIR$/Customer_board_controller/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/Customer_board_controller/vendor/laravel/breeze" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.3">
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.0">
     <option name="suggestChangeDefaultLanguageLevel" value="false" />
   </component>
   <component name="PhpUnit">
