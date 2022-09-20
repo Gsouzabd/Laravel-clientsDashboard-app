@@ -21,7 +21,7 @@ class ClientesController extends Controller
     }
 
     public function index(Request $request){
-        $clientes = Cliente::all();
+        $clientes = Cliente::paginate(5);
 
         $successMsg = $request->session()->get('msg');
 

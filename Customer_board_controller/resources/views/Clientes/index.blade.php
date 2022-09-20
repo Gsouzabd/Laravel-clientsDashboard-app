@@ -60,11 +60,14 @@
             <td> <button class="btn btn-danger mb-2" type="submit">Excluir</button></td>
             </form>
         </tr>
-            <tbody>
 
     </tbody>
         <?php endforeach; ?>
     </table>
+    {{-- Pagination --}}
+    <div class="d-flex justify-content-center">
+        {{ $clientes->links()}}
+    </div>
 
 </div>
 </x-layout>

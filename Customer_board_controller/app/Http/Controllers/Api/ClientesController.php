@@ -36,6 +36,7 @@ class ClientesController extends Controller
         if ($clienteModel === null){
             return response()->json(['message' => 'cliente not found'], 404);
         }
+
         return $clienteModel;
     }
 
